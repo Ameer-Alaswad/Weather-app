@@ -93,7 +93,7 @@ export default function Form() {
               variant="contained"
               endIcon={<SendIcon />}
             >
-              Send
+              Search
             </Button>
           </FormControl>
           {emptyInput && (
