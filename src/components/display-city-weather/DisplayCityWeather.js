@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from "react";
+// import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./DisplayCityWeather.css";
 import Button from "@mui/material/Button";
-import { WeatherContext } from "../../context/weatherContext";
+// import { WeatherContext } from "../../context/weatherContext";
 const weekday = [
   "Sunday",
   "Monday",
