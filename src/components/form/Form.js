@@ -26,7 +26,10 @@ export default function Form() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (cityInput === "") return setEmptyInput(true);
+    if (cityInput === "") {
+      setError(false);
+      return setEmptyInput(true);
+    }
     setEmptyInput(false);
     fetchCity(cityInput).then((city) => {
       if (city === undefined) return;
