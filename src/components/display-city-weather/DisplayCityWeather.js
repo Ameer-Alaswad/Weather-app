@@ -14,8 +14,8 @@ const weekday = [
 function DisplayCityWeather() {
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage"));
   console.log(cityData);
-  const icon = cityData[0].data.forecast.forecastday[0].day.condition.icon;
-  const { icon: todayIcon } = cityData[0].data.current.condition;
+  //   const icon = cityData[0].data.forecast.forecastday[0].day.condition.icon;
+  //   const { icon: todayIcon } = cityData[0].data.current.condition;
   const { name: cityName, country } = cityData[0].data.location;
   const { temp_c: tempreture } = cityData[0].data.current;
   const { forecastday } = cityData[0].data.forecast;

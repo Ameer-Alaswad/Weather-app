@@ -1,8 +1,8 @@
-import { InputLabel, Input, fabClasses } from "@mui/material";
+import { InputLabel, Input } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
 // import useFetchWeather from "../../hooks/useWeathrFetch";
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { FormControl } from "@mui/material";
 import axios from "axios";
 import { WeatherContext } from "../../context/weatherContext";
