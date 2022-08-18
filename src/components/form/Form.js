@@ -24,6 +24,7 @@ export default function Form() {
       setError(true);
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (cityInput === "") {

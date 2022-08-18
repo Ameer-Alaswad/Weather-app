@@ -126,6 +126,8 @@ p {
 .mr-auto,
 .mx-auto {
     margin-right: auto !important;
+    display: flex;
+    justify-content: space-between;
 }
 
 .display-3 {

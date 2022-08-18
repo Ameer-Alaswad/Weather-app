@@ -20,6 +20,7 @@ function DisplayCityWeather() {
   const currentDayDate = forecastday[0].date;
   const currentDay = new Date(forecastday[0].date);
   const otherDays = forecastday.slice(1, forecastday.length);
+  const { icon: todayIcon, text } = cityData[0].data.current.condition;
   let tday = weekday[currentDay.getDay()];
   return (
     <div>
@@ -34,11 +35,6 @@ function DisplayCityWeather() {
             <div className="col-lg-8 grid-margin stretch-card">
               <div className="card card-weather">
                 <div className="card-body">
-                  {/* <img
-                    src={todayIcon}
-                    style={{ height: "80px", width: "80px" }}
-                    alt="icons"
-                  /> */}
                   <div className="weather-date-location">
                     <h3>{tday}</h3>
                     <p className="text-gray">
@@ -53,8 +49,14 @@ function DisplayCityWeather() {
                     <div className="mr-auto">
                       <h4 className="display-3">
                         <span className="symbol">{tempreture}&deg;</span>C
+                        <span style={{ fontWeight: "lighter" }}>, {text}</span>
                       </h4>
-                      <p>Cloudy</p>
+
+                      <img
+                        src={todayIcon}
+                        style={{ height: "100px", width: "100px" }}
+                        alt="icons"
+                      />
                     </div>
                   </div>
                 </div>
