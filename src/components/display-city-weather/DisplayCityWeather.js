@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { WeatherContext } from "../../context/weatherContext";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./DisplayCityWeather.css";
 import Button from "@mui/material/Button";
@@ -15,7 +14,6 @@ const weekday = [
 function DisplayCityWeather() {
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage"));
   console.log(cityData);
-  //   const { cityWeather } = useContext(WeatherContext || cityData);
   const icon = cityData[0].data.forecast.forecastday[0].day.condition.icon;
   const { icon: todayIcon } = cityData[0].data.current.condition;
   const { name: cityName, country } = cityData[0].data.location;
