@@ -1,7 +1,6 @@
 import { InputLabel, Input } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
-// import useFetchWeather from "../../hooks/useWeathrFetch";
 import React, { useState, useContext } from "react";
 import { FormControl } from "@mui/material";
 import axios from "axios";
@@ -49,12 +48,11 @@ export default function Form() {
           textAlign: "center",
         }}
       >
-        Weather app
+        Weather Forecast
       </h1>
       <div
         style={{
           display: "flex",
-          // flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
           height: "600px",
@@ -103,6 +101,7 @@ export default function Form() {
               style={{
                 position: "absolute",
                 top: "110px",
+                color: "red",
               }}
             >
               Please type a City
@@ -113,6 +112,7 @@ export default function Form() {
               style={{
                 position: "absolute",
                 top: "110px",
+                color: "red",
               }}
             >
               Location does not exist
