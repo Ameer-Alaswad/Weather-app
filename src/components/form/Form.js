@@ -15,13 +15,19 @@ export default function Form() {
   const fetchCity = async (cityName) => {
     try {
       const res = await axios.get(
-        `https://api.weatherapi.com/v1/forecast.json?key=7aeb059c876c48e29eb50119221608&q=${cityName}&days=6&aqi=no&alerts=no`
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=metric&key=7XMDD3J7K9FE56KUEXUDCLJCR&contentType=json`
       );
       setError(false);
       return res;
     } catch (error) {
       setError(true);
     }
+  };
+  const fetchCity2 = async (cityName) => {
+    const res = await axios.get(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=metric&key=7XMDD3J7K9FE56KUEXUDCLJCR&contentType=json`
+    );
+    return res;
   };
 
   const handleSubmit = (e) => {
@@ -31,6 +37,13 @@ export default function Form() {
       return setEmptyInput(true);
     }
     setEmptyInput(false);
+    // fetchCity2(cityInput).then((input) => {
+    //   // console.log(input);
+    //   return localStorage.setItem(
+    //     "cityDataInStorage2",
+    //     JSON.stringify([input])
+    //   );
+    // });
     fetchCity(cityInput).then((city) => {
       if (city === undefined) return;
       setCityWeather([city]);

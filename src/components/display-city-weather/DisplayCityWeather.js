@@ -1,8 +1,6 @@
-// import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./DisplayCityWeather.css";
 import Button from "@mui/material/Button";
-// import { WeatherContext } from "../../context/weatherContext";
 const weekday = [
   "Sunday",
   "Monday",
@@ -14,14 +12,15 @@ const weekday = [
 ];
 function DisplayCityWeather() {
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
-  const { name: cityName, country } = cityData[0].data.location;
-  const { temp_c: tempreture } = cityData[0].data.current;
-  const { forecastday } = cityData[0].data.forecast;
-  const currentDayDate = forecastday[0].date;
-  const currentDay = new Date(forecastday[0].date);
-  const otherDays = forecastday.slice(1, forecastday.length);
-  const { icon: todayIcon, text } = cityData[0].data.current.condition;
-  let tday = weekday[currentDay.getDay()];
+  const firstDayData = cityData[0].data.days[0];
+  const { conditions } = cityData[0].data.currentConditions;
+  const { resolvedAddress } = cityData[0].data;
+  const { datetime: todayDate, temp } = firstDayData;
+  const { days: nextFiveDays } = cityData[0].data;
+  const otherDays = nextFiveDays.slice(1, 6);
+  console.log(otherDays);
+  const dayDate = new Date(todayDate);
+  let weekDay = weekday[dayDate.getDay()];
   return (
     <div>
       <div className="page-content page-container" id="page-content">
@@ -36,42 +35,44 @@ function DisplayCityWeather() {
               <div className="card card-weather">
                 <div className="card-body">
                   <div className="weather-date-location">
-                    <h3>{tday}</h3>
+                    <h3>{weekDay}</h3>
                     <p className="text-gray">
-                      <span className="weather-date">{currentDayDate}</span>
+                      <span className="weather-date">{todayDate}</span>
                       <span className="weather-location">
                         {" "}
-                        {cityName}, {country}
+                        {resolvedAddress}
                       </span>
                     </p>
                   </div>
                   <div className="weather-data d-flex">
                     <div className="mr-auto">
                       <h4 className="display-3">
-                        <span className="symbol">{tempreture}&deg;</span>C
-                        <span style={{ fontWeight: "lighter" }}>, {text}</span>
+                        <span className="symbol">{temp}&deg;</span>C
+                        <span style={{ fontWeight: "lighter" }}>
+                          , {conditions}
+                        </span>
                       </h4>
 
-                      <img
+                      {/* <img
                         src={todayIcon}
                         style={{ height: "100px", width: "100px" }}
                         alt="icons"
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>
                 <div className="card-body p-0">
                   <div className="d-flex weakly-weather">
                     {otherDays.map((day, i) => {
-                      const dayDate = new Date(day.date);
+                      const { datetime: daysDate, temp: tempreture } = day;
+                      const dayDate = new Date(daysDate);
                       let weekDays = weekday[dayDate.getDay()];
-                      const { icon: daysIcons } = day.day.condition;
-                      const { maxtemp_c: temperature } = day.day;
+
                       return (
                         <div key={i} className="weakly-weather-item">
                           <p className="mb-0">{weekDays}</p>
-                          <img src={daysIcons} alt="icons" />
-                          <p className="mb-0">{temperature}&deg;</p>
+                          {/* <img  alt="icons" /> */}
+                          <p className="mb-0">{tempreture}&deg;</p>
                         </div>
                       );
                     })}
