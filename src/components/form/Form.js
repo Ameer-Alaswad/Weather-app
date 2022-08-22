@@ -15,7 +15,7 @@ export default function Form() {
   const fetchCity = async (cityName) => {
     try {
       const res = await axios.get(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=metric&key=7XMDD3J7K9FE56KUEXUDCLJCR&contentType=json`
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?iconSet=icons1&unitGroup=metric&key=7XMDD3J7K9FE56KUEXUDCLJCR&contentType=json`
       );
       setError(false);
       return res;
