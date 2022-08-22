@@ -23,12 +23,12 @@ export default function Form() {
       setError(true);
     }
   };
-  const fetchCity2 = async (cityName) => {
-    const res = await axios.get(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=metric&key=7XMDD3J7K9FE56KUEXUDCLJCR&contentType=json`
-    );
-    return res;
-  };
+  // const fetchCity2 = async (cityName) => {
+  //   const res = await axios.get(
+  //     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=metric&key=7XMDD3J7K9FE56KUEXUDCLJCR&contentType=json`
+  //   );
+  //   return res;
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
