@@ -13,7 +13,7 @@ export const formContainer = {
   justifyContent: "center",
   alignItems: "center",
   position: "relative",
-  alignSelf: "flexStart",
+  alignSelf: "flex-start",
   marginTop: "80px",
 };
 export const formPageContainer = {

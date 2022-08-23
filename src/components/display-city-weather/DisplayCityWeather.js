@@ -7,11 +7,21 @@ import Button from "@mui/material/Button";
 import weatherData from "../assets";
 // Components
 import DisplayWeatherNextDays from "./DisplayWeatherNextDays";
-const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS } = weatherData;
+const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS, daysWeatherData } =
+  weatherData;
 ////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
-  const { firstDayIcon, conditions, resolvedAddress, todayDate, temp } =
-    weatherData.weatherDisplayData;
+  const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
+  const {
+    firstDayIcon,
+    conditions,
+    resolvedAddress,
+    todayDate,
+    temp,
+    otherDays,
+  } = daysWeatherData(cityData);
+  ////////////////////////////////////
+
   const dayDate = new Date(todayDate);
   let weekDay = WEEK_DAYS[dayDate.getDay()];
   return (
@@ -59,7 +69,7 @@ function DisplayCityWeather() {
                 </div>
                 <div className="card-body p-0">
                   <div className="d-flex weakly-weather">
-                    <DisplayWeatherNextDays />
+                    <DisplayWeatherNextDays otherDays={otherDays} />
                   </div>
                 </div>
               </div>

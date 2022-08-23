@@ -16,8 +16,8 @@ function App() {
           <Route path="/" element={<Form />} />
           <Route path="/city" element={<DisplayCityWeather />} />
         </Routes>
+        <SimpleBottomNavigation />
       </Router>
-      <SimpleBottomNavigation />
     </div>
   );
 }

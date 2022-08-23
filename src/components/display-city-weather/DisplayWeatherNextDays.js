@@ -2,9 +2,8 @@ import "./DisplayCityWeather.css";
 import React from "react";
 import weatherData from "../assets";
 
-export default function DisplayWeatherNextDays() {
+export default function DisplayWeatherNextDays({ otherDays }) {
   const { WEATHER_ICONS, WEEK_DAYS } = weatherData;
-  const { otherDays } = weatherData.weatherDisplayData;
   return (
     <>
       {otherDays.map((day, i) => {
