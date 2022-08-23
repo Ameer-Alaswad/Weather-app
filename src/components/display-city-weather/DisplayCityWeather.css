@@ -178,7 +178,16 @@ p {
     margin: 0 auto;
 }
 
-.d-flex {}
+.condition {
+    font-weight: lighter;
+}
 
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
+.first-day-icon {
+    height: 100px;
+    width: 100px;
+}
+
+.weather-icons-images {
+    width: 50px;
+    margin-top: 10px;
+}

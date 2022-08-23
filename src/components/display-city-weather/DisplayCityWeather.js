@@ -1,51 +1,19 @@
 import { Link } from "react-router-dom";
+// styles
 import "./DisplayCityWeather.css";
+// Material UI
 import Button from "@mui/material/Button";
-import { useState } from "react";
-const weatherIcons = {
-  snow: "/weather-icons/snow.png",
-  rain: "/weather-icons/rain.png",
-  fog: "/weather-icons/fog.png",
-  wind: "/weather-icons/wind.png",
-  cloudy: "/weather-icons/cloudy.png",
-  "partly-cloudy-day": "/weather-icons/partly-cloudy-day.png",
-  "partly-cloudy-night": "/weather-icons/partly-cloudy-night.png",
-  "clear-day": "/weather-icons/clear-day.png",
-  "clear-night": "/weather-icons/clear-night.png",
-};
-const weatherBackground = {
-  snow: "/weather-backgrounds/snow.jpg",
-  rain: "/weather-backgrounds/rain.jpg",
-  fog: "/weather-backgrounds/fog.jpg",
-  wind: "/weather-backgrounds/wind.jpg",
-  cloudy: "/weather-backgrounds/cloudy.jpg",
-  "partly-cloudy-day": "/weather-backgrounds/partly-cloudy-day.jpg",
-  "partly-cloudy-night": "/weather-backgrounds/partly-cloudy-night.jpg",
-  "clear-day": "/weather-backgrounds/clear-day.jpg",
-  "clear-night": "/weather-backgrounds/clear-night.jpg",
-};
-const weekday = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+// Data
+import weatherData from "../assets";
+// Components
+import DisplayWeatherNextDays from "./DisplayWeatherNextDays";
+const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS } = weatherData;
+////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
-  const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
-  const [hoursDiv, setHoursDiv] = useState(false);
-  const firstDayData = cityData[0].data.days[0];
-  const { icon: firstDayIcon } = cityData[0].data.days[0];
-  const { conditions } = cityData[0].data.currentConditions;
-  const { resolvedAddress } = cityData[0].data;
-  const { datetime: todayDate, temp } = firstDayData;
-  const { days: nextFiveDays } = cityData[0].data;
-  const otherDays = nextFiveDays.slice(1, nextFiveDays.length);
-  console.log(cityData);
+  const { firstDayIcon, conditions, resolvedAddress, todayDate, temp } =
+    weatherData.weatherDisplayData;
   const dayDate = new Date(todayDate);
-  let weekDay = weekday[dayDate.getDay()];
+  let weekDay = WEEK_DAYS[dayDate.getDay()];
   return (
     <div>
       <div className="page-content page-container" id="page-content">
@@ -61,7 +29,7 @@ function DisplayCityWeather() {
                 <div
                   className="card-body"
                   style={{
-                    backgroundImage: `url(${weatherBackground[firstDayIcon]})`,
+                    backgroundImage: `url(${WEATHER_BACKGROUNDS[firstDayIcon]})`,
                   }}
                 >
                   <div className="weather-date-location">
@@ -78,14 +46,12 @@ function DisplayCityWeather() {
                     <div className="mr-auto">
                       <h4 className="display-3">
                         <span className="symbol">{temp}&deg;</span>C
-                        <span style={{ fontWeight: "lighter" }}>
-                          , {conditions}
-                        </span>
+                        <span className="condition">, {conditions}</span>
                       </h4>
 
                       <img
-                        src={weatherIcons[firstDayIcon]}
-                        style={{ height: "100px", width: "100px" }}
+                        src={WEATHER_ICONS[firstDayIcon]}
+                        className="first-day-icon"
                         alt="icons"
                       />
                     </div>
@@ -93,28 +59,7 @@ function DisplayCityWeather() {
                 </div>
                 <div className="card-body p-0">
                   <div className="d-flex weakly-weather">
-                    {otherDays.map((day, i) => {
-                      const {
-                        datetime: daysDate,
-                        temp: temperature,
-                        icon,
-                      } = day;
-                      console.log(icon);
-                      const dayDate = new Date(daysDate);
-                      let weekDays = weekday[dayDate.getDay()];
-
-                      return (
-                        <div key={i} className="weakly-weather-item">
-                          <p className="mb-0">{weekDays}</p>
-                          <img
-                            style={{ width: "50px", marginTop: "10px" }}
-                            alt="icon"
-                            src={weatherIcons[icon]}
-                          />
-                          <p className="mb-0">{temperature}&deg;</p>
-                        </div>
-                      );
-                    })}
+                    <DisplayWeatherNextDays />
                   </div>
                 </div>
               </div>
