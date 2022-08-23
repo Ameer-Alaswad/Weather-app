@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./DisplayCityWeather.css";
 import Button from "@mui/material/Button";
+import { useState } from "react";
 const weatherIcons = {
   snow: "/weather-icons/snow.png",
   rain: "/weather-icons/rain.png",
@@ -34,13 +35,14 @@ const weekday = [
 ];
 function DisplayCityWeather() {
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
+  const [hoursDiv, setHoursDiv] = useState(false);
   const firstDayData = cityData[0].data.days[0];
   const { icon: firstDayIcon } = cityData[0].data.days[0];
   const { conditions } = cityData[0].data.currentConditions;
   const { resolvedAddress } = cityData[0].data;
   const { datetime: todayDate, temp } = firstDayData;
   const { days: nextFiveDays } = cityData[0].data;
-  const otherDays = nextFiveDays.slice(1, 6);
+  const otherDays = nextFiveDays.slice(1, nextFiveDays.length);
   console.log(cityData);
   const dayDate = new Date(todayDate);
   let weekDay = weekday[dayDate.getDay()];
