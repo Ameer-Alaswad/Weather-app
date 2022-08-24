@@ -1,11 +1,19 @@
-const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
-const firstDayData = cityData[0].data.days[0];
-const { icon: firstDayIcon } = cityData[0].data.days[0];
-const { conditions } = cityData[0].data.currentConditions;
-const { resolvedAddress, days: nextFiveDays } = cityData[0].data;
-const { datetime: todayDate, temp } = firstDayData;
-const otherDays = nextFiveDays.slice(1, nextFiveDays.length);
-//////////////////////////////////////////////////////////////////
+const daysWeatherData = (cityData) => {
+  const firstDayData = cityData[0].data.days[0];
+  const { icon: firstDayIcon } = cityData[0].data.days[0];
+  const { conditions } = cityData[0].data.currentConditions;
+  const { resolvedAddress, days: nextFiveDays } = cityData[0].data;
+  const { datetime: todayDate, temp } = firstDayData;
+  const otherDays = nextFiveDays.slice(1, 7);
+  return {
+    firstDayIcon,
+    conditions,
+    resolvedAddress,
+    todayDate,
+    temp,
+    otherDays,
+  };
+};
 const WEATHER_ICONS = {
   snow: "/weather-icons/snow.png",
   rain: "/weather-icons/rain.png",
@@ -37,18 +45,11 @@ const WEEK_DAYS = [
   "Friday",
   "Saturday",
 ];
-const weatherDisplayData = {
-  firstDayIcon,
-  conditions,
-  resolvedAddress,
-  todayDate,
-  temp,
-  otherDays,
-};
+
 const weatherData = {
   WEATHER_ICONS,
   WEATHER_BACKGROUNDS,
   WEEK_DAYS,
-  weatherDisplayData,
+  daysWeatherData,
 };
 export default weatherData;
