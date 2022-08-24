@@ -11,7 +11,7 @@ export default function SimpleBottomNavigation() {
   return (
     <Box sx={{ width: "100%" }}>
       <BottomNavigation
-        style={{ backgroundColor: "rgb(0, 30, 60)", height: "55px" }}
+        style={{ backgroundColor: "rgb(0, 30, 60)" }}
         showLabels
         value={value}
         onChange={(newValue) => {
