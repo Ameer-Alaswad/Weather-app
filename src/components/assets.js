@@ -4,7 +4,7 @@ const daysWeatherData = (cityData) => {
   const { conditions } = cityData[0].data.currentConditions;
   const { resolvedAddress, days: nextFiveDays } = cityData[0].data;
   const { datetime: todayDate, temp } = firstDayData;
-  const otherDays = nextFiveDays.slice(1, nextFiveDays.length);
+  const otherDays = nextFiveDays.slice(1, 7);
   return {
     firstDayIcon,
     conditions,
