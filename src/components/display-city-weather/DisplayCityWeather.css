@@ -22,6 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
 }
 
@@ -29,6 +30,7 @@ body {
 .purchace-popup>div {
     margin-bottom: 60px;
     width: 650px;
+    height: 550px;
 }
 
 .card {
@@ -161,10 +163,7 @@ p {
     display: flex;
 }
 
-.row {
-    margin: 0 auto;
-    margin-bottom: 140px;
-}
+
 
 .condition {
     font-weight: lighter;
@@ -178,4 +177,30 @@ p {
 .weather-icons-images {
     width: 50px;
     margin-top: 10px;
+}
+
+
+
+
+.hours-forecast {
+    transition: width 2s, height 4s;
+    background: #ffffff;
+    display: flex;
+    font-size: 1.2rem;
+    overflow-x: auto;
+    border-top: 1px solid #f2f2f2;
+    justify-content: space-evenly;
+
+}
+
+.hour {
+    flex: 0 0 14.24%;
+    padding: 6px;
+    text-align: center;
+}
+
+.open-hours-forecast-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
