@@ -1,3 +1,5 @@
+import { handleUpdateAndFetchCityLogic } from "../ustils";
+
 export const HandleFetchCityLogic = ({
   cityInput,
   setError,
@@ -10,9 +12,10 @@ export const HandleFetchCityLogic = ({
     return setEmptyInput(true);
   }
   setEmptyInput(false);
-  fetchCity(cityInput, setError).then((city) => {
-    if (city === undefined) return;
-    localStorage.setItem("cityDataInStorage", JSON.stringify([city]));
-    return navigate("/city");
+  handleUpdateAndFetchCityLogic({
+    fetchCity,
+    cityInput,
+    setError,
+    navigate,
   });
 };

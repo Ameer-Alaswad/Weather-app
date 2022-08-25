@@ -183,13 +183,11 @@ p {
 
 
 .hours-forecast {
-    transition: width 2s, height 4s;
     background: #ffffff;
     display: flex;
     font-size: 1.2rem;
     overflow-x: auto;
     border-top: 1px solid #f2f2f2;
-    justify-content: space-evenly;
 
 }
 
@@ -203,4 +201,10 @@ p {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.buttons-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }

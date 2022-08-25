@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 // styles
 import "./DisplayCityWeather.css";
 // Material UI
 import Button from "@mui/material/Button";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // Data
 import weatherData from "../assets";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
@@ -11,11 +12,15 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 // Components
 import DisplayWeatherNextDays from "./DisplayWeatherNextDays";
 import DisplayWeatherHours from "./DisplayHoursWeather";
+import UpdateWeatherButton from "./UpdateWeatherButton";
+// Context
+import { WeatherContext } from "../../context/weatherContext";
 
 const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS, daysWeatherData } =
   weatherData;
 ////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
+  const { setCityInput } = useContext(WeatherContext);
   const [hoursVisible, setHoursVisible] = useState(false);
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
   const {
@@ -35,11 +40,19 @@ function DisplayCityWeather() {
       <div className="page-content page-container" id="page-content">
         <div className="padding">
           <div className="row container d-flex justify-content-center">
-            <Link style={{ textDecoration: "none" }} to="/">
-              <Button style={{ marginBottom: "10px" }} variant="contained">
-                Go back
-              </Button>{" "}
-            </Link>
+            <div className="buttons-container">
+              <Link style={{ textDecoration: "none" }} to="/">
+                <Button
+                  onClick={() => setCityInput("")}
+                  style={{ marginBottom: "5px" }}
+                  variant="contained"
+                  startIcon={<ArrowBackIcon />}
+                >
+                  Go back
+                </Button>{" "}
+              </Link>
+              <UpdateWeatherButton />
+            </div>
             <div className="col-lg-8 grid-margin stretch-card">
               <div className="card card-weather">
                 <div
