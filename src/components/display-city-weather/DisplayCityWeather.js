@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 // styles
 import "./DisplayCityWeather.css";
@@ -5,12 +6,17 @@ import "./DisplayCityWeather.css";
 import Button from "@mui/material/Button";
 // Data
 import weatherData from "../assets";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 // Components
 import DisplayWeatherNextDays from "./DisplayWeatherNextDays";
+import DisplayWeatherHours from "./DisplayHoursWeather";
+
 const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS, daysWeatherData } =
   weatherData;
 ////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
+  const [hoursVisible, setHoursVisible] = useState(false);
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
   const {
     firstDayIcon,
@@ -72,6 +78,22 @@ function DisplayCityWeather() {
                     <DisplayWeatherNextDays otherDays={otherDays} />
                   </div>
                 </div>
+              </div>
+              {hoursVisible && (
+                <div className="hours-forecast">
+                  <DisplayWeatherHours cityData={cityData} />
+                </div>
+              )}
+              <div className="open-hours-forecast-button-container">
+                <Button
+                  onClick={() => setHoursVisible(!hoursVisible)}
+                  variant="contained"
+                  endIcon={
+                    hoursVisible ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />
+                  }
+                >
+                  Hours
+                </Button>
               </div>
             </div>
           </div>
