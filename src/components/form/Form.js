@@ -20,8 +20,8 @@ import {
 // Component
 export default function Form() {
   let navigate = useNavigate();
-  const { cityInput, setCityInput } = useContext(WeatherContext);
-  const [error, setError] = useState(false);
+  const { cityInput, setCityInput, error, setError } =
+    useContext(WeatherContext);
   const [emptyInput, setEmptyInput] = useState(false);
   ///////////////////////////////////////////////////////////////////////
 
