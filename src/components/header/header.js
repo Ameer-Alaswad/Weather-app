@@ -8,7 +8,7 @@ const buttonStyle = { textDecoration: "none", color: "white" };
 export default function ButtonAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar style={{ backgroundColor: "rgb(38 157 245)" }} position="static">
         <Toolbar>
           <Box variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <img

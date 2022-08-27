@@ -20,7 +20,8 @@ const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS, daysWeatherData } =
   weatherData;
 ////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
-  const { setCityInput } = useContext(WeatherContext);
+  const { setCityInput, setTrackUserFetches, trackUserFetches } =
+    useContext(WeatherContext);
   const [hoursVisible, setHoursVisible] = useState(false);
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
   const {
@@ -36,7 +37,7 @@ function DisplayCityWeather() {
   const dayDate = new Date(todayDate);
   let weekDay = WEEK_DAYS[dayDate.getDay()];
   return (
-    <div>
+    <div className="display-city-weather-container">
       <div className="page-content page-container" id="page-content">
         <div className="padding">
           <div className="row container d-flex justify-content-center">

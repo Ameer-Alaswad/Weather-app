@@ -6,6 +6,8 @@ export const HandleFetchCityLogic = ({
   setEmptyInput,
   fetchCity,
   navigate,
+  setTrackUserFetches,
+  trackUserFetches,
 }) => {
   if (cityInput === "") {
     setError(false);
@@ -17,5 +19,7 @@ export const HandleFetchCityLogic = ({
     cityInput,
     setError,
     navigate,
+    setTrackUserFetches,
+    trackUserFetches,
   });
 };

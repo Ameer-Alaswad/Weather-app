@@ -14,14 +14,17 @@ export const formContainer = {
   alignItems: "center",
   position: "relative",
   alignSelf: "flex-start",
-  marginTop: "80px",
+  marginTop: "18px",
 };
 export const formPageContainer = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "600px",
+  // display: "flex",
+  // justifyContent: "center",
+  // alignItems: "center",
+  height: "200px",
 };
 export const siteTitle = {
   textAlign: "center",
+  fontFamily: "Gothic A3",
+  fontSize: "50px",
+  marginBottom: "193px",
 };

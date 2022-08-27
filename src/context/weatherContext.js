@@ -5,6 +5,7 @@ export const WeatherContext = createContext();
 export const WeatherContextProvider = ({ children }) => {
   const [cityInput, setCityInput] = useState("");
   const [error, setError] = useState(false);
+  const [trackUserFetches, setTrackUserFetches] = useState(null);
 
   return (
     <WeatherContext.Provider
@@ -13,6 +14,8 @@ export const WeatherContextProvider = ({ children }) => {
         setCityInput,
         error,
         setError,
+        trackUserFetches,
+        setTrackUserFetches,
       }}
     >
       {children}

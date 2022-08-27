@@ -5,6 +5,16 @@ import ButtonAppBar from "./components/header/header";
 import SimpleBottomNavigation from "./components/footer/footer";
 
 function App() {
+  const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+  console.log(date);
+  const limitFetchWeatherDataLocalStorage = localStorage.getItem(
+    "limitWeatherFetches" || []
+  );
+  if (!limitFetchWeatherDataLocalStorage)
+    localStorage.setItem(
+      "limitWeatherFetches",
+      JSON.stringify([{ fetchesPerDay: 0, todayDate: date }])
+    );
   return (
     <div
       style={{ height: "100vh", display: "flex", flexDirection: "column" }}

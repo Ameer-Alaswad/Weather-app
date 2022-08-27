@@ -208,3 +208,19 @@ p {
     display: flex;
     justify-content: space-between;
 }
+
+.form-container {
+    display: flex;
+    height: 600px;
+    margin-bottom: 150px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.display-city-weather-container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}

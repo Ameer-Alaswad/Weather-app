@@ -17,56 +17,90 @@ import {
   formPageContainer,
   siteTitle,
 } from "./formStyles";
-// Component
+
+// Storage
+// const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+const limitFetchWeatherDataLocalStorage = JSON.parse(
+  localStorage.getItem("limitWeatherFetches" || [])
+);
 export default function Form() {
   let navigate = useNavigate();
-  const { cityInput, setCityInput, error, setError } =
-    useContext(WeatherContext);
+  const {
+    cityInput,
+    setCityInput,
+    error,
+    setError,
+    setTrackUserFetches,
+    trackUserFetches,
+  } = useContext(WeatherContext);
   const [emptyInput, setEmptyInput] = useState(false);
+
   ///////////////////////////////////////////////////////////////////////
   const handleSubmit = (e) => {
     e.preventDefault();
+    setTrackUserFetches(limitFetchWeatherDataLocalStorage);
+    console.log();
+    // if (limitFetches.current >= 5) {
+    //   navigate("/");
+    //   return alert("Sorry out of limit for the day, Come back tomorrow ");
+    // }
+
     HandleFetchCityLogic({
       cityInput,
       setError,
       setEmptyInput,
       fetchCity,
       navigate,
+      setTrackUserFetches,
+      trackUserFetches,
     });
   };
   /////////////////////////////////////////////////////////////////
   return (
-    <div>
-      <h1 style={siteTitle}>Weather Forecast</h1>
-      <div style={formPageContainer}>
-        <div style={formContainer}>
-          <form onSubmit={handleSubmit}>
-            <FormControl
-              style={{
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
-              <InputLabel htmlFor="my-input">Enter a City</InputLabel>
-              <Input
+    <div
+      style={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
+      <div className="form-container">
+        <h1 style={siteTitle}>Weather Forecast</h1>
+        <img style={{ width: "500px" }} src="/form-image.png" alt="form-" />
+        <div style={formPageContainer}>
+          <div style={formContainer}>
+            <form onSubmit={handleSubmit}>
+              <FormControl
                 style={{
-                  marginRight: "10px",
+                  display: "flex",
+                  flexDirection: "row",
                 }}
-                onChange={(e) => setCityInput(e.target.value)}
-                id="my-input"
-                aria-describedby="my-helper-text"
-              />
-              <Button type="submit" variant="contained" endIcon={<SendIcon />}>
-                Search
-              </Button>
-            </FormControl>
-          </form>
-          {emptyInput && <div style={errorMessage}>Please type a City</div>}
-          {error && <div style={errorMessage}>Location does not exist</div>}
+              >
+                <InputLabel htmlFor="my-input">Enter a City</InputLabel>
+                <Input
+                  style={{
+                    marginRight: "10px",
+                  }}
+                  onChange={(e) => setCityInput(e.target.value)}
+                  id="my-input"
+                  aria-describedby="my-helper-text"
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  endIcon={<SendIcon />}
+                >
+                  Search
+                </Button>
+              </FormControl>
+            </form>
+            {emptyInput && <div style={errorMessage}>Please type a City</div>}
+            {error && <div style={errorMessage}>Location does not exist</div>}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 // hwb(25deg 8% 26%)
-// rgb(38 157 245)
