@@ -6,7 +6,10 @@ export const fetchCity = async ({
   setTrackUserFetches,
   trackUserFetches,
 }) => {
-  const city = cityInput;
+  const cityNameFromStorage = JSON.parse(
+    localStorage.getItem("cityDataInStorage" || [])
+  );
+  const city = cityInput || cityNameFromStorage[0]?.data.address;
   // setTrackUserFetches(limitFetchWeatherDataLocalStorage);
   // const addFetch = trackUserFetches.map((add) => {
   //   add.fetchesPerDay = add.fetchesPerDay + 1;
