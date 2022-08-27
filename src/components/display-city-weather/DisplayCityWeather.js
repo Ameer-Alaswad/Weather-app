@@ -36,7 +36,7 @@ function DisplayCityWeather() {
   const dayDate = new Date(todayDate);
   let weekDay = WEEK_DAYS[dayDate.getDay()];
   return (
-    <div>
+    <div className="display-city-weather-container">
       <div className="page-content page-container" id="page-content">
         <div className="padding">
           <div className="row container d-flex justify-content-center">

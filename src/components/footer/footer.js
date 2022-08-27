@@ -11,7 +11,7 @@ export default function SimpleBottomNavigation() {
   return (
     <Box sx={{ width: "100%" }}>
       <BottomNavigation
-        style={{ backgroundColor: "rgb(0, 30, 60)" }}
+        style={{ backgroundColor: "hwb(25deg 8% 26%)" }}
         showLabels
         value={value}
         onChange={(newValue) => {
@@ -45,3 +45,4 @@ export default function SimpleBottomNavigation() {
     </Box>
   );
 }
+// hwb(25deg 8% 26%)
