@@ -24,7 +24,6 @@ export default function Form() {
     useContext(WeatherContext);
   const [emptyInput, setEmptyInput] = useState(false);
   ///////////////////////////////////////////////////////////////////////
-
   const handleSubmit = (e) => {
     e.preventDefault();
     HandleFetchCityLogic({
@@ -69,3 +68,5 @@ export default function Form() {
     </div>
   );
 }
+// hwb(25deg 8% 26%)
+// rgb(38 157 245)
