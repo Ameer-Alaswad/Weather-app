@@ -1,16 +1,11 @@
 import axios from "axios";
-const limitFetchWeatherDataLocalStorage = JSON.parse(
-  localStorage.getItem("limitWeatherFetches" || [])
-);
+
 export const fetchCity = async ({
   cityInput,
   setError,
   setTrackUserFetches,
   trackUserFetches,
 }) => {
-  const cityNameFromStorage = JSON.parse(
-    localStorage.getItem("cityDataInStorage" || [])
-  );
   const city = cityInput;
   // setTrackUserFetches(limitFetchWeatherDataLocalStorage);
   // const addFetch = trackUserFetches.map((add) => {

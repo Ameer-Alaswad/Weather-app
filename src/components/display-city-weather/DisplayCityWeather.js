@@ -20,8 +20,7 @@ const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS, daysWeatherData } =
   weatherData;
 ////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
-  const { setCityInput, setTrackUserFetches, trackUserFetches } =
-    useContext(WeatherContext);
+  const { setCityInput } = useContext(WeatherContext);
   const [hoursVisible, setHoursVisible] = useState(false);
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
   const {
