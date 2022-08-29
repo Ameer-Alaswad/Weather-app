@@ -46,7 +46,7 @@ export default function Form() {
           "Sorry you passed your limit for today, come back tomorrow!"
         );
       }, 100);
-  }, []);
+  }, [fetchesLimitError]);
   //////////////////////////////////////////////////////
   const handleSubmit = (e) => {
     e.preventDefault();
