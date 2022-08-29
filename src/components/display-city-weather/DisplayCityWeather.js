@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 // styles
 import "./DisplayCityWeather.css";
@@ -15,12 +15,23 @@ import DisplayWeatherHours from "./DisplayHoursWeather";
 import UpdateWeatherButton from "./UpdateWeatherButton";
 // Context
 import { WeatherContext } from "../../context/weatherContext";
+import { resetDailyLimitFetchesLogic } from "../ustils";
+
+import { useNavigate } from "react-router-dom";
 
 const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS, daysWeatherData } =
   weatherData;
+const limitFetchWeatherDataLocalStorage = JSON.parse(
+  localStorage.getItem("limitWeatherFetches" || [])
+);
+const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+
 ////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
-  const { setCityInput } = useContext(WeatherContext);
+  let navigate = useNavigate();
+
+  resetDailyLimitFetchesLogic(limitFetchWeatherDataLocalStorage, date);
+  const { setCityInput, setFetchesLimitError } = useContext(WeatherContext);
   const [hoursVisible, setHoursVisible] = useState(false);
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
   const {
@@ -31,6 +42,17 @@ function DisplayCityWeather() {
     temp,
     otherDays,
   } = daysWeatherData(cityData);
+
+  ///////////////////////////////////////////////////
+  useEffect(() => {
+    if (limitFetchWeatherDataLocalStorage) {
+      if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay > 5) {
+        setFetchesLimitError(true);
+        return navigate("/");
+      }
+    }
+  }, []);
+
   ////////////////////////////////////
 
   const dayDate = new Date(todayDate);

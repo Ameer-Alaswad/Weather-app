@@ -17,9 +17,6 @@ export const formContainer = {
   marginTop: "18px",
 };
 export const formPageContainer = {
-  // display: "flex",
-  // justifyContent: "center",
-  // alignItems: "center",
   height: "200px",
 };
 export const siteTitle = {
