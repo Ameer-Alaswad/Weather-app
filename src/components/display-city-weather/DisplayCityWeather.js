@@ -51,7 +51,7 @@ function DisplayCityWeather() {
         return navigate("/");
       }
     }
-  }, []);
+  }, [limitFetchWeatherDataLocalStorage]);
 
   ////////////////////////////////////
 
