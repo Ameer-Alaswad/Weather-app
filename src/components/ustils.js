@@ -16,13 +16,6 @@ export const handleUpdateAndFetchCityLogic = ({
     const limitFetchWeatherDataLocalStorage = JSON.parse(
       localStorage.getItem("limitWeatherFetches" || [])
     );
-    // const addFetch = limitFetchWeatherDataLocalStorage.map((add) => {
-    //   add.fetchesPerDay = add.fetchesPerDay + 1;
-    //   return {
-    //     fetchesPerDay: add.fetchesPerDay,
-    //     todayDate: add.todayDate,
-    //   };
-    // });
 
     if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay > 5) {
       alert("Sorry you passed your limit for today, come back tomorrow!");
@@ -40,4 +33,19 @@ export const handleUpdateAndFetchCityLogic = ({
       return navigate("/city");
     }
   });
+};
+
+export const resetDailyLimitFetchesLogic = (
+  limitFetchWeatherDataLocalStorage,
+  date
+) => {
+  if (limitFetchWeatherDataLocalStorage) {
+    if (date !== limitFetchWeatherDataLocalStorage[0]?.todayDate) {
+      localStorage.setItem(
+        "limitWeatherFetches",
+        JSON.stringify([{ fetchesPerDay: 0, todayDate: date }])
+      );
+      console.log(date, limitFetchWeatherDataLocalStorage[0]?.todayDate);
+    }
+  }
 };

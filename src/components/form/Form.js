@@ -1,7 +1,7 @@
 // React stuff
 import { WeatherContext } from "../../context/weatherContext";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 // functions
 import { fetchCity } from "../fetch";
 import { HandleFetchCityLogic } from "./formUtils";
@@ -17,13 +17,15 @@ import {
   formPageContainer,
   siteTitle,
 } from "./formStyles";
+import { resetDailyLimitFetchesLogic } from "../ustils";
 
 // Storage
-// const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
 const limitFetchWeatherDataLocalStorage = JSON.parse(
   localStorage.getItem("limitWeatherFetches" || [])
 );
 export default function Form() {
+  resetDailyLimitFetchesLogic(limitFetchWeatherDataLocalStorage, date);
   let navigate = useNavigate();
   const {
     cityInput,
@@ -32,18 +34,23 @@ export default function Form() {
     setError,
     setTrackUserFetches,
     trackUserFetches,
+    fetchesLimitError,
   } = useContext(WeatherContext);
   const [emptyInput, setEmptyInput] = useState(false);
 
   ///////////////////////////////////////////////////////////////////////
+  useEffect(() => {
+    if (fetchesLimitError)
+      setTimeout(() => {
+        return alert(
+          "Sorry you passed your limit for today, come back tomorrow!"
+        );
+      }, 100);
+  }, []);
+  //////////////////////////////////////////////////////
   const handleSubmit = (e) => {
     e.preventDefault();
     setTrackUserFetches(limitFetchWeatherDataLocalStorage);
-    console.log();
-    // if (limitFetches.current >= 5) {
-    //   navigate("/");
-    //   return alert("Sorry out of limit for the day, Come back tomorrow ");
-    // }
 
     HandleFetchCityLogic({
       cityInput,
@@ -56,6 +63,7 @@ export default function Form() {
     });
   };
   /////////////////////////////////////////////////////////////////
+
   return (
     <div
       style={{
