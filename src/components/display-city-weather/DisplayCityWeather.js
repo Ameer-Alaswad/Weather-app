@@ -47,6 +47,7 @@ function DisplayCityWeather() {
   useEffect(() => {
     if (limitFetchWeatherDataLocalStorage) {
       if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay > 5) {
+        console.log("hi");
         setFetchesLimitError(true);
         return navigate("/");
       }
