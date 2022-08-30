@@ -33,7 +33,6 @@ export default function Form() {
     setError,
     setTrackUserFetches,
     trackUserFetches,
-    fetchesLimitError,
   } = useContext(WeatherContext);
   const [emptyInput, setEmptyInput] = useState(false);
 
