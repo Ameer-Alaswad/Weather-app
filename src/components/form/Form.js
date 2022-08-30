@@ -25,7 +25,6 @@ const limitFetchWeatherDataLocalStorage = JSON.parse(
   localStorage.getItem("limitWeatherFetches" || [])
 );
 export default function Form() {
-  resetDailyLimitFetchesLogic(limitFetchWeatherDataLocalStorage, date);
   let navigate = useNavigate();
   const {
     cityInput,
@@ -40,13 +39,8 @@ export default function Form() {
 
   ///////////////////////////////////////////////////////////////////////
   useEffect(() => {
-    if (fetchesLimitError)
-      setTimeout(() => {
-        return alert(
-          "Sorry you passed your limit for today, come back tomorrow!"
-        );
-      }, 200);
-  }, [fetchesLimitError]);
+    resetDailyLimitFetchesLogic(limitFetchWeatherDataLocalStorage, date);
+  }, []);
   //////////////////////////////////////////////////////
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -98,6 +92,22 @@ export default function Form() {
                   type="submit"
                   variant="contained"
                   endIcon={<SendIcon />}
+                >
+                  Search
+                </Button>
+                <Button
+                  onClick={() => {
+                    localStorage.setItem(
+                      "limitWeatherFetches",
+                      JSON.stringify([
+                        {
+                          fetchesPerDay: 0,
+                          todayDate: "2022/08/29",
+                        },
+                      ])
+                    );
+                  }}
+                  variant="contained"
                 >
                   Search
                 </Button>

@@ -29,7 +29,6 @@ const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
 ////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
   let navigate = useNavigate();
-  resetDailyLimitFetchesLogic(limitFetchWeatherDataLocalStorage, date);
   const { setCityInput, setFetchesLimitError } = useContext(WeatherContext);
   const [hoursVisible, setHoursVisible] = useState(false);
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
@@ -94,6 +93,8 @@ function DisplayCityWeather() {
   } = daysWeatherData(allData);
   ///////////////////////////////////////////////////
   useEffect(() => {
+    resetDailyLimitFetchesLogic(limitFetchWeatherDataLocalStorage, date);
+
     if (cityData === undefined || cityData === null) {
       setTimeout(() => {
         return alert("Search for a city first!");
@@ -102,9 +103,13 @@ function DisplayCityWeather() {
     }
 
     if (limitFetchWeatherDataLocalStorage) {
-      if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay > 5) {
-        console.log("hi");
-        setFetchesLimitError(true);
+      if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 5) {
+        console.log(limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay);
+        setTimeout(() => {
+          return alert(
+            "Sorry you passed your limit for today, come back tomorrow!"
+          );
+        }, 200);
         return navigate("/");
       }
     }
