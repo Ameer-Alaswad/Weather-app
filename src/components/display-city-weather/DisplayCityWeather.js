@@ -29,11 +29,61 @@ const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
 ////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
   let navigate = useNavigate();
-
   resetDailyLimitFetchesLogic(limitFetchWeatherDataLocalStorage, date);
   const { setCityInput, setFetchesLimitError } = useContext(WeatherContext);
   const [hoursVisible, setHoursVisible] = useState(false);
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
+  const data = [
+    {
+      data: {
+        address: "berlin",
+        currentConditions: {
+          conditions: "Partially cloudy",
+          datetime: "20:15:45",
+          icon: "partly-cloudy-night",
+          temp: 19.4,
+        },
+        days: [
+          {
+            datetime: "2022-08-30",
+            icon: "partly-cloudy-day",
+            temp: 17.3,
+            hours: [
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+              { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            ],
+          },
+          { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
+          { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
+          { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
+          { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
+        ],
+      },
+    },
+  ];
+  const allData = cityData || data;
   const {
     firstDayIcon,
     conditions,
@@ -41,10 +91,16 @@ function DisplayCityWeather() {
     todayDate,
     temp,
     otherDays,
-  } = daysWeatherData(cityData);
-
+  } = daysWeatherData(allData);
   ///////////////////////////////////////////////////
   useEffect(() => {
+    if (cityData === undefined || cityData === null) {
+      setTimeout(() => {
+        return alert("Search for a city first!");
+      }, 200);
+      return navigate("/");
+    }
+
     if (limitFetchWeatherDataLocalStorage) {
       if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay > 5) {
         console.log("hi");
@@ -52,7 +108,7 @@ function DisplayCityWeather() {
         return navigate("/");
       }
     }
-  }, [navigate, setFetchesLimitError]);
+  }, [navigate, setFetchesLimitError, cityData]);
 
   ////////////////////////////////////
 

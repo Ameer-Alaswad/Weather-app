@@ -1,5 +1,5 @@
 const daysWeatherData = (cityData) => {
-  const firstDayData = cityData[0]?.data.days[0];
+  const firstDayData = cityData[0]?.data?.days[0];
   const { icon: firstDayIcon } = cityData[0].data.days[0];
   const { conditions } = cityData[0].data.currentConditions;
   const { resolvedAddress, days: nextFiveDays } = cityData[0].data;
