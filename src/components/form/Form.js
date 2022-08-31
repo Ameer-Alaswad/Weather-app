@@ -112,25 +112,7 @@ export default function Form() {
                 </Button>
               </FormControl>
             </form>
-            <Button
-              onClick={() => {
-                localStorage.setItem(
-                  "limitWeatherFetches",
-                  JSON.stringify([
-                    {
-                      fetchesPerDay: 5,
-                      todayDate: "2022/08/29",
-                    },
-                  ])
-                );
-                setStorage(
-                  JSON.parse(localStorage.getItem("limitWeatherFetches" || []))
-                );
-              }}
-              variant="contained"
-            >
-              Search
-            </Button>
+
             {emptyInput && <div style={errorMessage}>Please type a City</div>}
             {error && <div style={errorMessage}>Location does not exist</div>}
           </div>
