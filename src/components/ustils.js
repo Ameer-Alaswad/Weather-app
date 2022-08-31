@@ -36,15 +36,24 @@ export const handleUpdateAndFetchCityLogic = ({
 
 export const resetDailyLimitFetchesLogic = (
   limitFetchWeatherDataLocalStorage,
-  date
+  date,
+  setStorage
 ) => {
   if (limitFetchWeatherDataLocalStorage) {
     if (date !== limitFetchWeatherDataLocalStorage[0]?.todayDate) {
+      console.log(date, limitFetchWeatherDataLocalStorage[0]?.todayDate);
       localStorage.setItem(
         "limitWeatherFetches",
         JSON.stringify([{ fetchesPerDay: 0, todayDate: date }])
       );
-      console.log(date, limitFetchWeatherDataLocalStorage[0]?.todayDate);
+      console.log(setStorage);
+
+      // setStorage(
+      //   localStorage.setItem(
+      //     "limitWeatherFetches",
+      //     JSON.stringify([{ fetchesPerDay: 0, todayDate: date }])
+      //   )
+      // );
     }
   }
 };

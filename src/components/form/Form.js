@@ -33,13 +33,19 @@ export default function Form() {
     setError,
     setTrackUserFetches,
     trackUserFetches,
+    storage,
+    setStorage,
   } = useContext(WeatherContext);
   const [emptyInput, setEmptyInput] = useState(false);
 
   ///////////////////////////////////////////////////////////////////////
   useEffect(() => {
-    resetDailyLimitFetchesLogic(limitFetchWeatherDataLocalStorage, date);
-  }, []);
+    resetDailyLimitFetchesLogic(
+      limitFetchWeatherDataLocalStorage,
+      date,
+      setStorage
+    );
+  }, [storage, setStorage]);
   //////////////////////////////////////////////////////
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -100,11 +106,12 @@ export default function Form() {
                       "limitWeatherFetches",
                       JSON.stringify([
                         {
-                          fetchesPerDay: 0,
+                          fetchesPerDay: 5,
                           todayDate: "2022/08/29",
                         },
                       ])
                     );
+                    setStorage(limitFetchWeatherDataLocalStorage);
                   }}
                   variant="contained"
                 >
@@ -120,4 +127,3 @@ export default function Form() {
     </div>
   );
 }
-// hwb(25deg 8% 26%)

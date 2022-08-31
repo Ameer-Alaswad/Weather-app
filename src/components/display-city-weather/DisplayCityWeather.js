@@ -21,9 +21,7 @@ import { useNavigate } from "react-router-dom";
 
 const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS, daysWeatherData } =
   weatherData;
-const limitFetchWeatherDataLocalStorage = JSON.parse(
-  localStorage.getItem("limitWeatherFetches" || [])
-);
+
 const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
 
 ////////////////////////////////////////////////////////////////////////////
@@ -90,10 +88,13 @@ function DisplayCityWeather() {
     todayDate,
     temp,
     otherDays,
+    storage,
+    setStorage,
   } = daysWeatherData(allData);
   ///////////////////////////////////////////////////
   useEffect(() => {
-    resetDailyLimitFetchesLogic(limitFetchWeatherDataLocalStorage, date);
+    console.log("hi");
+    resetDailyLimitFetchesLogic(storage, date, setStorage);
 
     if (cityData === undefined || cityData === null) {
       setTimeout(() => {
@@ -102,9 +103,9 @@ function DisplayCityWeather() {
       return navigate("/");
     }
 
-    if (limitFetchWeatherDataLocalStorage) {
-      if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 5) {
-        console.log(limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay);
+    if (storage) {
+      if (storage[0]?.fetchesPerDay >= 5) {
+        console.log(storage);
         setTimeout(() => {
           return alert(
             "Sorry you passed your limit for today, come back tomorrow!"
@@ -113,7 +114,7 @@ function DisplayCityWeather() {
         return navigate("/");
       }
     }
-  }, [navigate, setFetchesLimitError, cityData]);
+  }, [navigate, setFetchesLimitError, cityData, storage, setStorage]);
 
   ////////////////////////////////////
 
