@@ -23,7 +23,9 @@ const { WEATHER_ICONS, WEATHER_BACKGROUNDS, WEEK_DAYS, daysWeatherData } =
   weatherData;
 
 const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
-
+const limitFetchWeatherDataLocalStorage = JSON.parse(
+  localStorage.getItem("limitWeatherFetches" || [])
+);
 ////////////////////////////////////////////////////////////////////////////
 function DisplayCityWeather() {
   let navigate = useNavigate();
@@ -103,8 +105,8 @@ function DisplayCityWeather() {
       return navigate("/");
     }
 
-    if (storage) {
-      if (storage[0]?.fetchesPerDay >= 5) {
+    if (limitFetchWeatherDataLocalStorage) {
+      if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 5) {
         console.log(storage);
         setTimeout(() => {
           return alert(
