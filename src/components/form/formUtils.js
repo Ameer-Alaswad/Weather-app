@@ -8,6 +8,7 @@ export const HandleFetchCityLogic = ({
   navigate,
   setTrackUserFetches,
   trackUserFetches,
+  storage,
 }) => {
   if (cityInput === "") {
     setError(false);
@@ -21,5 +22,6 @@ export const HandleFetchCityLogic = ({
     navigate,
     setTrackUserFetches,
     trackUserFetches,
+    storage,
   });
 };

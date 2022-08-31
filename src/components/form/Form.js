@@ -40,10 +40,15 @@ export default function Form() {
 
   ///////////////////////////////////////////////////////////////////////
   useEffect(() => {
+    console.log(
+      "form",
+      JSON.parse(localStorage.getItem("limitWeatherFetches" || []))
+    );
     resetDailyLimitFetchesLogic(
       limitFetchWeatherDataLocalStorage,
       date,
-      setStorage
+      setStorage,
+      storage
     );
   }, [storage, setStorage]);
   //////////////////////////////////////////////////////
@@ -59,6 +64,7 @@ export default function Form() {
       navigate,
       setTrackUserFetches,
       trackUserFetches,
+      storage,
     });
   };
   /////////////////////////////////////////////////////////////////
@@ -100,25 +106,27 @@ export default function Form() {
                 >
                   Search
                 </Button>
-                <Button
-                  onClick={() => {
-                    localStorage.setItem(
-                      "limitWeatherFetches",
-                      JSON.stringify([
-                        {
-                          fetchesPerDay: 5,
-                          todayDate: "2022/08/29",
-                        },
-                      ])
-                    );
-                    setStorage(limitFetchWeatherDataLocalStorage);
-                  }}
-                  variant="contained"
-                >
-                  Search
-                </Button>
               </FormControl>
             </form>
+            <Button
+              onClick={() => {
+                localStorage.setItem(
+                  "limitWeatherFetches",
+                  JSON.stringify([
+                    {
+                      fetchesPerDay: 5,
+                      todayDate: "2022/08/29",
+                    },
+                  ])
+                );
+                setStorage(
+                  JSON.parse(localStorage.getItem("limitWeatherFetches" || []))
+                );
+              }}
+              variant="contained"
+            >
+              Search
+            </Button>
             {emptyInput && <div style={errorMessage}>Please type a City</div>}
             {error && <div style={errorMessage}>Location does not exist</div>}
           </div>

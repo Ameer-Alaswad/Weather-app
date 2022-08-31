@@ -5,6 +5,7 @@ export const handleUpdateAndFetchCityLogic = ({
   navigate,
   setTrackUserFetches,
   trackUserFetches,
+  storage,
 }) => {
   fetchCity({
     cityInput,
@@ -16,7 +17,7 @@ export const handleUpdateAndFetchCityLogic = ({
     const limitFetchWeatherDataLocalStorage = JSON.parse(
       localStorage.getItem("limitWeatherFetches" || [])
     );
-
+    console.log(storage);
     if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 5) {
       alert("Sorry you passed your limit for today, come back tomorrow!");
       return navigate("/");
@@ -37,23 +38,21 @@ export const handleUpdateAndFetchCityLogic = ({
 export const resetDailyLimitFetchesLogic = (
   limitFetchWeatherDataLocalStorage,
   date,
-  setStorage
+  setStorage,
+  storage
 ) => {
-  if (limitFetchWeatherDataLocalStorage) {
-    if (date !== limitFetchWeatherDataLocalStorage[0]?.todayDate) {
-      console.log(date, limitFetchWeatherDataLocalStorage[0]?.todayDate);
+  if (storage) {
+    if (date !== storage[0]?.todayDate) {
+      console.log(
+        "utils",
+        JSON.parse(localStorage.getItem("limitWeatherFetches" || []))
+      );
+      console.log(date, storage[0]?.todayDate);
       localStorage.setItem(
         "limitWeatherFetches",
         JSON.stringify([{ fetchesPerDay: 0, todayDate: date }])
       );
       console.log(setStorage);
-
-      // setStorage(
-      //   localStorage.setItem(
-      //     "limitWeatherFetches",
-      //     JSON.stringify([{ fetchesPerDay: 0, todayDate: date }])
-      //   )
-      // );
     }
   }
 };

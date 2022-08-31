@@ -31,6 +31,12 @@ export default function UpdateWeatherButton() {
     //   navigate("/");
     //   return alert("Sorry out of limit for the day, Come back tomorrow ");
     // }
+    console.log(
+      "update",
+      JSON.parse(localStorage.getItem("limitWeatherFetches" || []))
+    );
+    // setStorage(JSON.parse(localStorage.getItem("limitWeatherFetches" || [])));
+
     return handleUpdateAndFetchCityLogic({
       fetchCity,
       cityInput,
