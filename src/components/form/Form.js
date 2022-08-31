@@ -37,9 +37,13 @@ export default function Form() {
     setStorage,
   } = useContext(WeatherContext);
   const [emptyInput, setEmptyInput] = useState(false);
+  // setStorage(JSON.parse(localStorage.getItem("limitWeatherFetches" || [])));
 
   ///////////////////////////////////////////////////////////////////////
   useEffect(() => {
+    if (limitFetchWeatherDataLocalStorage) {
+      // setStorage(JSON.parse(localStorage.getItem("limitWeatherFetches" || [])))
+    }
     console.log(
       "form",
       JSON.parse(localStorage.getItem("limitWeatherFetches" || []))

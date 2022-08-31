@@ -24,7 +24,7 @@ if (
 export default function UpdateWeatherButton() {
   let navigate = useNavigate();
 
-  const { cityInput, setError } = useContext(WeatherContext);
+  const { cityInput, setError, setStorage } = useContext(WeatherContext);
   const handleUpdate = () => {
     // console.log(fetchesPerDay);
     // if (fetchesPerDay >= 5) {
@@ -35,7 +35,7 @@ export default function UpdateWeatherButton() {
       "update",
       JSON.parse(localStorage.getItem("limitWeatherFetches" || []))
     );
-    // setStorage(JSON.parse(localStorage.getItem("limitWeatherFetches" || [])));
+    setStorage(JSON.parse(localStorage.getItem("limitWeatherFetches" || [])));
 
     return handleUpdateAndFetchCityLogic({
       fetchCity,
