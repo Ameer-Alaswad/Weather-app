@@ -1,6 +1,8 @@
-import "./DisplayCityWeather.css";
 import React from "react";
+// Assets
 import weatherData from "../assets";
+// Styles
+import "./DisplayCityWeather.css";
 
 export default function DisplayWeatherHours({ cityData }) {
   const { WEATHER_ICONS } = weatherData;

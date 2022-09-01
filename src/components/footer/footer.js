@@ -45,4 +45,3 @@ export default function SimpleBottomNavigation() {
     </Box>
   );
 }
-// hwb(25deg 8% 26%)
