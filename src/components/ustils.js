@@ -18,7 +18,7 @@ export const handleUpdateAndFetchCityLogic = ({
       localStorage.getItem("limitWeatherFetches" || [])
     );
 
-    if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 5) {
+    if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 10) {
       alert("Sorry you passed your limit for today, come back tomorrow!");
       return navigate("/");
     }
@@ -62,7 +62,7 @@ export const outOfFetchesLimitChecker = (
   storage
 ) => {
   if (limitFetchWeatherDataLocalStorage) {
-    if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 5) {
+    if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 10) {
       setTimeout(() => {
         return alert(
           "Sorry you passed your limit for today, come back tomorrow!"
