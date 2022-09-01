@@ -6,7 +6,6 @@ import SimpleBottomNavigation from "./components/footer/footer";
 
 function App() {
   const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
-  console.log(date);
   const limitFetchWeatherDataLocalStorage = localStorage.getItem(
     "limitWeatherFetches" || []
   );

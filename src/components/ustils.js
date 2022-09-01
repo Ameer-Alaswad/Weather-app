@@ -5,7 +5,7 @@ export const handleUpdateAndFetchCityLogic = ({
   navigate,
   setTrackUserFetches,
   trackUserFetches,
-  storage,
+  setStorage,
 }) => {
   fetchCity({
     cityInput,
@@ -17,7 +17,7 @@ export const handleUpdateAndFetchCityLogic = ({
     const limitFetchWeatherDataLocalStorage = JSON.parse(
       localStorage.getItem("limitWeatherFetches" || [])
     );
-    console.log(storage);
+
     if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 5) {
       alert("Sorry you passed your limit for today, come back tomorrow!");
       return navigate("/");
@@ -34,25 +34,47 @@ export const handleUpdateAndFetchCityLogic = ({
     return navigate("/city");
   });
 };
-
-export const resetDailyLimitFetchesLogic = (
-  limitFetchWeatherDataLocalStorage,
-  date,
-  setStorage,
-  storage
-) => {
+//////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+export const resetDailyLimitFetchesLogic = (storage, date, setStorage) => {
   if (storage) {
     if (date !== storage[0]?.todayDate) {
-      console.log(
-        "utils",
-        JSON.parse(localStorage.getItem("limitWeatherFetches" || []))
-      );
-      console.log(date, storage[0]?.todayDate);
       localStorage.setItem(
         "limitWeatherFetches",
         JSON.stringify([{ fetchesPerDay: 0, todayDate: date }])
       );
-      console.log(setStorage);
     }
   }
+};
+
+export const thereIsNoWeatherDataChecker = (cityData, navigate) => {
+  if (cityData === undefined || cityData === null) {
+    setTimeout(() => {
+      return alert("Search for a city first!");
+    }, 200);
+    return navigate("/");
+  }
+};
+
+export const outOfFetchesLimitChecker = (
+  limitFetchWeatherDataLocalStorage,
+  navigate,
+  storage
+) => {
+  if (limitFetchWeatherDataLocalStorage) {
+    if (limitFetchWeatherDataLocalStorage[0]?.fetchesPerDay >= 5) {
+      setTimeout(() => {
+        return alert(
+          "Sorry you passed your limit for today, come back tomorrow!"
+        );
+      }, 200);
+      return navigate("/");
+    }
+  }
+};
+
+export const generateDate = (date, WEEK_DAYS) => {
+  const dayDate = new Date(date);
+  let weekDay = WEEK_DAYS[dayDate.getDay()];
+  return weekDay;
 };

@@ -53,3 +53,54 @@ const weatherData = {
   daysWeatherData,
 };
 export default weatherData;
+
+export const defaultWeatherData = [
+  {
+    data: {
+      address: "berlin",
+      currentConditions: {
+        conditions: "Partially cloudy",
+        datetime: "20:15:45",
+        icon: "partly-cloudy-night",
+        temp: 19.4,
+      },
+      days: [
+        {
+          datetime: "2022-08-30",
+          icon: "partly-cloudy-day",
+          temp: 17.3,
+          hours: [
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+            { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
+          ],
+        },
+        { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
+        { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
+        { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
+        { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
+      ],
+    },
+  },
+];

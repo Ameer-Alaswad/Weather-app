@@ -1,6 +1,9 @@
-import "./DisplayCityWeather.css";
 import React from "react";
+// Styles
+import "./DisplayCityWeather.css";
+// Assets
 import weatherData from "../assets";
+import { generateDate } from "../ustils";
 
 export default function DisplayWeatherNextDays({ otherDays }) {
   const { WEATHER_ICONS, WEEK_DAYS } = weatherData;
@@ -8,8 +11,7 @@ export default function DisplayWeatherNextDays({ otherDays }) {
     <>
       {otherDays.map((day, i) => {
         const { datetime: daysDate, temp: temperature, icon } = day;
-        const dayDate = new Date(daysDate);
-        let weekDays = WEEK_DAYS[dayDate.getDay()];
+        const weekDays = generateDate(daysDate, WEEK_DAYS);
 
         return (
           <div key={i} className="weakly-weather-item">
