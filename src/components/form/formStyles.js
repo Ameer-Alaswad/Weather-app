@@ -16,6 +16,19 @@ export const formContainer = {
   alignSelf: "flex-start",
   marginTop: "18px",
 };
+export const formContainerResponsive = {
+  backgroundColor: "white",
+  height: "150px",
+  width: "350px",
+  borderRadius: "25px",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+  alignSelf: "flex-start",
+  marginTop: "18px",
+};
 export const formPageContainer = {
   height: "200px",
 };

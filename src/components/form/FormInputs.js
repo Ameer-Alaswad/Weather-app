@@ -2,18 +2,25 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 // Material Ui
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 import { InputLabel, Input } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
 import { FormControl } from "@mui/material";
 // Styles
-import { errorMessage, formContainer } from "./formStyles";
+import {
+  errorMessage,
+  formContainer,
+  formContainerResponsive,
+} from "./formStyles";
 // Context
 import { WeatherContext } from "../../context/weatherContext";
 // UTILS
 import { HandleFetchCityLogic } from "./formUtils";
 import { fetchCity } from "../fetch";
 export const FormInputs = () => {
+  const matches = useMediaQuery("(max-width:550px)");
   const limitFetchWeatherDataLocalStorage = JSON.parse(
     localStorage.getItem("limitWeatherFetches" || [])
   );
@@ -47,7 +54,7 @@ export const FormInputs = () => {
     setStorage(limitFetchWeatherDataLocalStorage);
   };
   return (
-    <div style={formContainer}>
+    <div style={matches ? formContainerResponsive : formContainer}>
       <form onSubmit={handleSubmit}>
         <FormControl
           style={{
