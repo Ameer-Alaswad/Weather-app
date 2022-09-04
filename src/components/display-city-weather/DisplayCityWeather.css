@@ -70,7 +70,7 @@ body {
 
 .card-body {
     flex: 1 1 auto;
-    padding: 1rem;
+    padding: 0.7rem;
 }
 
 .card-weather .weather-date-location {
@@ -164,6 +164,8 @@ p {
     margin-top: 5px;
     font-size: 16px;
     font-weight: bold;
+    width: 74.97;
+
 }
 
 .card-weather .weakly-weather .weakly-weather-item i {
@@ -203,7 +205,7 @@ p {
 }
 
 .weather-icons-images {
-    width: 50px;
+    width: 40px;
     margin-top: 10px;
 }
 
@@ -261,6 +263,10 @@ p {
     font-weight: 600;
 }
 
+.week-days-container {
+    width: 85px;
+}
+
 @media (max-width:671px) {
 
     .grid-margin,
@@ -270,7 +276,7 @@ p {
 
     .weakly-weather-item {
 
-        padding: 4.5px;
+        padding: 3.5px;
     }
 
     .condition {
@@ -291,6 +297,13 @@ p {
         font-size: 13px;
         font-weight: 600;
     }
+
+    .mb-0 {
+
+        width: 74.97;
+    }
+
+
 }
 
 
@@ -309,6 +322,10 @@ p {
 
         padding-left: 13px;
         padding-right: 13px;
+    }
+
+    .week-days-container {
+        width: 75px;
     }
 
 }

@@ -3,7 +3,7 @@ const daysWeatherData = (cityData) => {
   const { icon: firstDayIcon } = cityData[0].data.days[0];
   const { conditions } = cityData[0].data.currentConditions;
   const { resolvedAddress, days: nextFiveDays } = cityData[0].data;
-  const { datetime: todayDate, temp } = firstDayData;
+  const { datetime: todayDate, temp, tempmin } = firstDayData;
   const otherDays = nextFiveDays.slice(1, 7);
   return {
     firstDayIcon,
@@ -12,6 +12,7 @@ const daysWeatherData = (cityData) => {
     todayDate,
     temp,
     otherDays,
+    tempmin,
   };
 };
 const WEATHER_ICONS = {
@@ -63,6 +64,7 @@ export const defaultWeatherData = [
         datetime: "20:15:45",
         icon: "partly-cloudy-night",
         temp: 19.4,
+        tempmin: 11.1,
       },
       days: [
         {
@@ -96,10 +98,42 @@ export const defaultWeatherData = [
             { datetime: "00:00:00", icon: "partly-cloudy-night", temp: 16 },
           ],
         },
-        { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
-        { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
-        { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
-        { datetime: "2022-08-30", icon: "partly-cloudy-day", temp: 17.3 },
+        {
+          datetime: "2022-08-30",
+          icon: "partly-cloudy-day",
+          temp: 17.3,
+          tempmin: "9.7",
+        },
+        {
+          datetime: "2022-08-30",
+          icon: "partly-cloudy-day",
+          temp: 17.3,
+          tempmin: "9.7",
+        },
+        {
+          datetime: "2022-08-30",
+          icon: "partly-cloudy-day",
+          temp: 17.3,
+          tempmin: "9.7",
+        },
+        {
+          datetime: "2022-08-30",
+          icon: "partly-cloudy-day",
+          temp: 17.3,
+          tempmin: "9.7",
+        },
+        {
+          datetime: "2022-08-30",
+          icon: "partly-cloudy-day",
+          temp: 17.3,
+          tempmin: "9.7",
+        },
+        {
+          datetime: "2022-08-30",
+          icon: "partly-cloudy-day",
+          temp: 17.3,
+          tempmin: "9.7",
+        },
       ],
     },
   },

@@ -25,7 +25,7 @@ export const formPageContainer = {
 };
 export const siteTitle = {
   textAlign: "center",
-  fontFamily: "Gothic A3",
   fontSize: "50px",
   marginBottom: "120px",
+  fontFamily: "Rajdhani",
 };
