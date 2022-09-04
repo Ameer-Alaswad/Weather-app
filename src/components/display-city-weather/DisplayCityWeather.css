@@ -14,10 +14,6 @@ body {
     flex: 1 1 auto
 }
 
-@media (max-width:991.98px) {}
-
-@media (max-width:767.98px) {}
-
 .padding {
     display: flex;
     flex-direction: column;
@@ -32,6 +28,11 @@ body {
     width: 650px;
     height: 550px;
 }
+
+
+
+
+
 
 .card {
     border: 0;
@@ -59,7 +60,7 @@ body {
 
 .card-weather .card-body:first-child {
     background-size: cover;
-    height: 245px;
+    height: 270px;
 }
 
 
@@ -73,8 +74,12 @@ body {
 }
 
 .card-weather .weather-date-location {
+
     padding: 0 0 38px;
 }
+
+
+
 
 .h3,
 h3 {
@@ -97,6 +102,8 @@ h6 {
     font-weight: 500;
 }
 
+
+
 .text-gray,
 .card-subtitle,
 .new-accounts ul.chats li.chat-persons a p.joined-date {
@@ -115,6 +122,7 @@ p {
 }
 
 .card-weather .weather-data {
+
     padding: 0 0 4.75rem;
 }
 
@@ -126,7 +134,8 @@ p {
 }
 
 .display-3 {
-    font-size: 2.5rem;
+
+    align-self: center;
 }
 
 .card-weather .card-body {
@@ -138,7 +147,7 @@ p {
     overflow-x: auto;
 }
 
-.card-weather .weakly-weather .weakly-weather-item {
+.weakly-weather-item {
     flex: 0 0 14.28%;
     border-right: 1px solid #f2f2f2;
     border-left: 1px solid #f2f2f2;
@@ -153,6 +162,8 @@ p {
 
 .mb-0 {
     margin-top: 5px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .card-weather .weakly-weather .weakly-weather-item i {
@@ -166,7 +177,24 @@ p {
 
 
 .condition {
-    font-weight: lighter;
+    font-weight: bold;
+    font-size: 40px;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #9696969a;
+}
+
+.symbol {
+    font-weight: bold;
+    border-radius: 5px 0px 0px 5px;
+    background-color: #9696969a;
+
+    font-size: 40px;
+
+}
+
+.week-day {
+    font-weight: bold;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 .first-day-icon {
@@ -223,4 +251,64 @@ p {
     height: 100%;
     align-items: center;
     justify-content: center;
+}
+
+.weather-date-and-location {
+    background-color: #9696969a;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+@media (max-width:671px) {
+
+    .grid-margin,
+    .purchace-popup>div {
+        width: 500px;
+    }
+
+    .weakly-weather-item {
+
+        padding: 4.5px;
+    }
+
+    .condition {
+        font-weight: bold;
+        font-size: 27px;
+    }
+
+    .symbol {
+        font-weight: bold;
+        font-size: 27px;
+
+    }
+
+    .weather-date-and-location {
+        background-color: #9696969a;
+        height: 100%;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+}
+
+
+@media (max-width:530px) {
+
+    .grid-margin,
+    .purchace-popup>div {
+        width: 350px;
+    }
+
+    .card-body {
+        padding: 6px;
+    }
+
+    .weakly-weather-item {
+
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
 }

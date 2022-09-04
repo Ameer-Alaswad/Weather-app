@@ -21,18 +21,20 @@ export const ForecastConditionsData = () => {
       }}
     >
       <div className="weather-date-location">
-        <h3>{weekDay}</h3>
+        <h3 className="week-day">{weekDay}</h3>
         <p className="text-gray">
-          <span className="weather-date">{todayDate}</span>
-          <span className="weather-location"> {resolvedAddress}</span>
+          <span className="weather-date-and-location">
+            <span className="weather-date">{todayDate}</span>
+            <span className="weather-location"> {resolvedAddress}</span>
+          </span>
         </p>
       </div>
       <div className="weather-data d-flex">
         <div className="mr-auto">
-          <h4 className="display-3">
-            <span className="symbol">{temp}&deg;</span>C
+          <span className="display-3">
+            <span className="symbol">{temp}&deg;C</span>
             <span className="condition">, {conditions}</span>
-          </h4>
+          </span>
           <img
             src={WEATHER_ICONS[firstDayIcon]}
             className="first-day-icon"
