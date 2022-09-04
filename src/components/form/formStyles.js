@@ -16,6 +16,10 @@ export const formContainer = {
   alignSelf: "flex-start",
   marginTop: "18px",
 };
+export const formContainerResponsive = {
+  ...formContainer,
+  width: "350px",
+};
 export const formPageContainer = {
   height: "200px",
 };
