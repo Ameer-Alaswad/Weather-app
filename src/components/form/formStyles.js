@@ -28,4 +28,5 @@ export const siteTitle = {
   fontFamily: "Gothic A3",
   fontSize: "50px",
   marginBottom: "120px",
+  fontFamily: "Rajdhani",
 };

@@ -10,8 +10,14 @@ export const ForecastConditionsData = () => {
     weatherData;
   const cityData = JSON.parse(localStorage.getItem("cityDataInStorage" || []));
   const weatherForecastData = cityData || defaultWeatherData;
-  const { firstDayIcon, conditions, resolvedAddress, todayDate, temp } =
-    daysWeatherData(weatherForecastData);
+  const {
+    firstDayIcon,
+    conditions,
+    resolvedAddress,
+    todayDate,
+    temp,
+    tempmin,
+  } = daysWeatherData(weatherForecastData);
   const weekDay = generateDate(todayDate, WEEK_DAYS);
   return (
     <div
@@ -32,7 +38,9 @@ export const ForecastConditionsData = () => {
       <div className="weather-data d-flex">
         <div className="mr-auto">
           <span className="display-3">
-            <span className="symbol">{temp}&deg;C</span>
+            <span className="symbol">
+              {temp}&deg;C/{tempmin}&deg;C
+            </span>
             <span className="condition">, {conditions}</span>
           </span>
           <img
