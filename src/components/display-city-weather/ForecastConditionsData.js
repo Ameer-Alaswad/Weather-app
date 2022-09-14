@@ -1,7 +1,7 @@
 import React from "react";
 // assets
 import weatherData, { defaultWeatherData } from "../assets";
-import { generateDate } from "../ustils";
+import { generateDate } from "../utils";
 // Styles
 import "./DisplayCityWeather.css";
 

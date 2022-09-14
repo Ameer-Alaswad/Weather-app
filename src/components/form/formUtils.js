@@ -1,4 +1,4 @@
-import { handleUpdateAndFetchCityLogic } from "../ustils";
+import { handleUpdateAndFetchCityLogic } from "../utils";
 
 export const HandleFetchCityLogic = ({
   cityInput,

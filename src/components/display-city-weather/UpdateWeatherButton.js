@@ -7,7 +7,7 @@ import { WeatherContext } from "../../context/weatherContext";
 import { useNavigate } from "react-router-dom";
 // Utils
 import { fetchCity } from "../fetch";
-import { handleUpdateAndFetchCityLogic } from "../ustils";
+import { handleUpdateAndFetchCityLogic } from "../utils";
 
 export default function UpdateWeatherButton() {
   let navigate = useNavigate();

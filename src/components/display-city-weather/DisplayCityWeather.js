@@ -13,7 +13,7 @@ import {
   outOfFetchesLimitChecker,
   resetDailyLimitFetchesLogic,
   thereIsNoWeatherDataChecker,
-} from "../ustils";
+} from "../utils";
 
 import { useNavigate } from "react-router-dom";
 import GoBackButton from "./GoBackButton";

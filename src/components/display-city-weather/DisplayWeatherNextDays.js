@@ -3,7 +3,7 @@ import React from "react";
 import "./DisplayCityWeather.css";
 // Assets
 import weatherData from "../assets";
-import { generateDate } from "../ustils";
+import { generateDate } from "../utils";
 
 export default function DisplayWeatherNextDays({ otherDays }) {
   const { WEATHER_ICONS, WEEK_DAYS } = weatherData;

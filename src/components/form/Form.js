@@ -3,7 +3,7 @@ import { WeatherContext } from "../../context/weatherContext";
 import React, { useContext, useEffect } from "react";
 // styles
 import { formPageContainer, siteTitle } from "./formStyles";
-import { resetDailyLimitFetchesLogic } from "../ustils";
+import { resetDailyLimitFetchesLogic } from "../utils";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { FormInputs } from "./FormInputs";
 // Storage
