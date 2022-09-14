@@ -19,14 +19,12 @@ function App() {
       style={{ height: "100vh", display: "flex", flexDirection: "column" }}
       className="App"
     >
-      <Router>
-        <ButtonAppBar />
-        <Routes>
-          <Route path="/" element={<Form />} />
-          <Route path="/city" element={<DisplayCityWeather />} />
-        </Routes>
-        <SimpleBottomNavigation />
-      </Router>
+      <ButtonAppBar />
+      <Routes>
+        <Route path="/" element={<Form />} />
+        <Route path="/city" element={<DisplayCityWeather />} />
+      </Routes>
+      <SimpleBottomNavigation />
     </div>
   );
 }

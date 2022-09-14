@@ -54,8 +54,11 @@ export const FormInputs = () => {
     setStorage(limitFetchWeatherDataLocalStorage);
   };
   return (
-    <div style={matches ? formContainerResponsive : formContainer}>
-      <form onSubmit={handleSubmit}>
+    <div
+      data-testid="form container"
+      style={matches ? formContainerResponsive : formContainer}
+    >
+      <form data-testid="form" onSubmit={handleSubmit}>
         <FormControl
           style={{
             display: "flex",
