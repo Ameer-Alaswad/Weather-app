@@ -1,6 +1,8 @@
 ## About the project
 
-Pokedex is a pokemon app where you can dive into pokemon world, you can find all Pokemon including your favorite one with it's stats, type(S), evolutions etc... .
+- Forecasting the weather involves recording the ongoing measurements of temperature Depending on where you are in the world. etc... .
+- Since i am using a free of charge API I implemented a functionality in this Project to prevent the user from making more than 10 calls per day, and the limit
+will ofc reset daily.
 
 ## Installation
 
@@ -26,7 +28,7 @@ npm test
 
 - CSS : Material UI
 
-- Javascript : React JS, React Query
+- Javascript : React JS, Jest, React testing Library, axios.
 
 ## Some screenshots
 
