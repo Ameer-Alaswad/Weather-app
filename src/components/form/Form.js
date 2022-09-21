@@ -19,6 +19,7 @@ export default function Form() {
   //////////////////////////////////////////////////////
   return (
     <div
+      data-testid="component wrapper"
       style={{
         height: "100%",
         display: "flex",
@@ -26,12 +27,12 @@ export default function Form() {
         justifyContent: "center",
       }}
     >
-      <div className="form-container">
+      <div data-testid="form-container" className="form-container">
         <h1 style={siteTitle}>Weather Forecast</h1>
         <img
           style={matches ? { width: "90%" } : { width: "500px" }}
           src="/form-image.png"
-          alt="form-"
+          alt="form-pic"
         />
         <div style={formPageContainer}>
           <FormInputs />
