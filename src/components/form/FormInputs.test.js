@@ -4,6 +4,8 @@ import { WeatherContextProvider } from "../../context/weatherContext";
 import { FormInputs } from "./FormInputs";
 import user from "@testing-library/user-event";
 
+const sum = (a, b) => a + b;
+
 describe("testing formInputs component", () => {
   test("Form Input", () => {
     render(
@@ -62,3 +64,5 @@ describe("testing formInputs component", () => {
     expect(input).toHaveValue("khaled");
   });
 });
+// get the function somehow (by name)
+//
