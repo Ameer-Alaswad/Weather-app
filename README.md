@@ -32,5 +32,5 @@ npm test
 
 ## Some screenshots
 
-![weather1](/public/Weather-app.png.png)
+![weather1](https://github.com/Ameer-Alaswad/Weather-app/blob/main/public/Weather-app.png)
 ![Pokedex 2](https://user-images.githubusercontent.com/17381734/162995118-82c41136-c9e2-4f2f-b0d5-5e7036138f4f.png)
