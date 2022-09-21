@@ -3,18 +3,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { WeatherContextProvider } from "../../context/weatherContext";
 import { FormInputs } from "./FormInputs";
 import user from "@testing-library/user-event";
+
 describe("testing formInputs component", () => {
   test("Form Input", () => {
     render(
       <BrowserRouter>
-        <WeatherContextProvider>
-          <Routes>
-            <Route path="*" element={<FormInputs />} />
-          </Routes>
-        </WeatherContextProvider>
-      </BrowserRouter>
+        <Routes>
+          <Route path="*" element={<FormInputs />} />
+        </Routes>
+      </BrowserRouter>,
+      { wrapper: WeatherContextProvider }
     );
-    const formContainer = screen.queryByTestId("form container");
+    const formContainer = screen.getByTestId("form container");
     expect(formContainer).toBeInTheDocument();
     ///////////////////////////////////////////////////
     const firstErrorMessage = screen.queryByText(/location does not exist/i);

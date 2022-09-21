@@ -12,7 +12,6 @@ export default function DisplayWeatherNextDays({ otherDays }) {
       {otherDays.map((day, i) => {
         const { datetime: daysDate, temp: temperature, icon, tempmin } = day;
         const weekDays = generateDate(daysDate, WEEK_DAYS);
-
         return (
           <div key={i} className="weakly-weather-item">
             <div className="week-days-container">
